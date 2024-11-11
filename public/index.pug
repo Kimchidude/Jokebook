@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title JokeBook
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Welcome to JokeBook!
+
+    // Display a random joke if one is available
+    if joke
+      h2 Random Joke
+      p= joke.setup
+      p= joke.delivery
+    else
+      p No jokes available.
+
+    // Search Form for Categories
+    form(action="/jokebook/search" method="GET")
+      input(type="text" name="query" placeholder="Search categories..." required)
+      button(type="submit") Search
+
+    // Display the search results (If any)
+    if message
+      p= message
+    else if jokes && jokes.length > 0
+      h2 Search Results for "#{category}" category:
+      ul
+        each joke in jokes
+          li
+            p= joke.setup
+            p= joke.delivery
+    else
+      p 
+
+    // Links to other pages
+    a(href="/jokebook/categories") View Categories
+    br
+    a(href="/jokebook/newjoke") Add New Joke

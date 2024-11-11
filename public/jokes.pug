@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Jokes in #{category}
+  body
+    h1 Jokes in #{category}
+
+    // Display jokes if available
+    if jokes.length > 0
+      .jokes
+        each joke, i in jokes
+          .joke
+            h3= joke.setup
+            p= joke.delivery
+    else
+      p No jokes in this category.
+
+    a(href="/jokebook") Back to Home

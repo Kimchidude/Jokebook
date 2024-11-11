@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Add New Joke
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Add a New Joke
+    
+    form(action="/jokebook/newjoke" method="POST")
+      div.form-group
+        label(for="category") Category:
+        select(name="category" id="category" required)
+          option(value="") -- Select a Category --
+          each category in categories
+            option(value=category.name) #{category.name}
+      
+      div.form-group
+        label(for="setup") Setup:
+        input(type="text" name="setup" id="setup" required)
+      
+      div.form-group
+        label(for="delivery") Delivery:
+        input(type="text" name="delivery" id="delivery" required)
+      
+      div.form-actions
+        button(type="submit") Add Joke
+        a(href="/jokebook") Cancel

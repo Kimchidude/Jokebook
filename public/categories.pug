@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Joke Categories
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Joke Categories
+    ul
+      each category in categories
+        li
+          a(href=`/jokebook/joke/${category.name}`) #{category.name}
+
+    // Add a link back to home
+    a(href="/jokebook") Back to Home
